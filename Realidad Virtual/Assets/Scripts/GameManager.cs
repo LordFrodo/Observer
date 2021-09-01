@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text ui_time;
     public bool ingame;
     [SerializeField]GameObject player;
-    [SerializeField] Transform lose, win, lvl1;
 
 
     // Start is called before the first frame update
@@ -29,7 +28,7 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         }
         
-        if(time <= 0)
+        if(time <= 0&& ingame)
         {
             ChangeScene("Win");
         }
@@ -40,26 +39,14 @@ public class GameManager : MonoBehaviour
         if (ingame == false)
         {
             EnemyController.lose_event -= Lose;
-            player.transform.position = lose.position;
-            //SceneManager.LoadScene("Lose", LoadSceneMode.Additive);
+            ChangeScene("Lose");
 
         }
         
     }
     public void ChangeScene(string scene_name)
     {
-        //SceneManager.LoadScene(scene_name, LoadSceneMode.Additive);
-        
-        if(scene_name == "Win")
-        {
-            player.transform.position = win.position;
-            ingame = false;
-        }
-        else
-        {
-            ingame = true;
-            player.transform.position = lvl1.position;
-        }
+        SceneManager.LoadScene(scene_name);
 
     }
     
