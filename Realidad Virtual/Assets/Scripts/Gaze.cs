@@ -7,7 +7,7 @@ using System;
 public class Gaze : MonoBehaviour
 {
 
-    [SerializeField] private float interactableDistance = 10f;
+    [SerializeField] private float interactableDistance;
 
     private GameObject _gazeObject;
     private PointerEventData _eventData;
